@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API de Piadas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .piada {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>API de Piadas</h1>
+    <div class="piada" id="piada"></div>
+    <button onclick="obterPiada()">Obter Piada</button>
+  </div>
+
+  <script>
+    function obterPiada() {
+      fetch('https://jubilant-succotash-x446vj94w442pxpv-5000.app.github.dev/piada')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('piada').innerText = data.piada;
+        })
+        .catch(error => {
+          console.error('Erro ao obter piada:', error);
+        });
+    }
+  </script>
+</body>
+</html>
